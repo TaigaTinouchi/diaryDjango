@@ -1,0 +1,166 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>diary</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <meta name="theme-color" content="#fafafa">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+  <div id="modal" class="dposition-fixed zindex-popover bg-light" style=" display: none; position: fixed;z-index: 1;left: 0;top: 0;height: 100%;width: 100%;overflow: auto;background-color: rgba(0,0,0,0.5);">
+    <p style="width: 500px; margin: 10% auto;" id="Form">
+      <!-入力登録->
+      <form class="container" action="/cgi-bin/updateCsv.py" method="POST" id="inputForm">
+        <div id="date"></div>
+        <!-開始時間登録:始->
+        <div class="row g-2 mb-3">
+          <span class="badge bg-secondary">From</span>
+          <!-時間->
+          <div class="col-md">
+            <div class="form-floating">
+              <select class="form-select" id="startHour" name="startHour" aria-label="Floating label select example">
+                <option selected></option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+
+              </select>
+              <label for="floatingSelectGrid">Hour</label>
+            </div>
+          </div>
+          <!-分->
+          <div class="col-md">
+            <div class="form-floating">
+              <select class="form-select" id="startMinutes" name="startMinutes" aria-label="Floating label select example">
+                <option selected></option>
+                <option value="00">00</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
+                <option value="45">45</option>
+              </select>
+              <label for="floatingSelectGrid">Minutes</label>
+            </div>
+          </div>
+          <!-開始時間設定-:終>
+        </div>
+        <!-期間登録:始->
+        <div class="row g-2 mb-2">
+          <span class="badge bg-secondary">To</span>
+          <!-時間->
+          <div class="col-md">
+            <div class="form-floating">
+              <select class="form-select" id="endHour" name="endHour" aria-label="Floating label select example">
+                <option selected></option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+
+              </select>
+              <label for="floatingSelectGrid">Hour</label>
+            </div>
+          </div>
+          <!-分->
+          <div class="col-md">
+            <div class="form-floating">
+              <select class="form-select" id="endMinutes" name="endMinutes" aria-label="Floating label select example">
+                <option selected></option>
+                <option value="00">00</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
+                <option value="45">45</option>
+              </select>
+              <label for="floatingSelectGrid">Minutes</label>
+            </div>
+          </div>
+          <!-期間登録:終->
+        </div>
+        <!-内容登録->
+        <div class="row g-2 mb-2">
+          <span class="badge bg-secondary">Content</span>
+          <div class="col-md">
+            <div class="form-floating">
+              <select class="form-select" id="floatingSelectGrid" name="color" aria-label="Floating label select example">
+                <option selected></option>
+                <option value="Gray">gray</option>
+                <option value="Red">red</option>
+                <option value="Blue">blue</option>
+                <option value="Green">green</option>
+                <option value="Yellow">yellow</option>
+              </select>
+              <label for="floatingSelectGrid">Color</label>
+            </div>
+          </div>
+          <div class="input-group mb-3 mt-3">
+            <textarea class="form-control" name="event" aria-label="With textarea"></textarea>
+            <button class="btn btn-outline-secondary" type="button" id="saveBtn" >Save</button>
+          </div>
+        </div>
+      </form>
+    </p>
+	  <p style="width: 500px; margin: 10% auto;"><a id="modalClose" class="btn btn-outline-secondary" style="">閉じる</a></p>
+  </div>
+  <div class="table" id="mainTable"></div>
+  <script src="./showCsv.js"></script>
+
+  </script>
+  <a href="./cgi-bin/updateCsv.py">Python</a>
+</body>
+
+</html>
