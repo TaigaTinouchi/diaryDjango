@@ -24,7 +24,7 @@ function getCsvData(dataPath){
 
 function csvToArray(data){
   let dataArray = [];
-  let instantArray = data.split('#');
+  let instantArray = data.split('|');
   let day = new Date();
   let year = day.getFullYear();
   let month = day.getMonth();
@@ -106,12 +106,12 @@ function convertArray(tableArray){
 }
 
 //フォーム関連関数
-function(sh,hm,eh,em){
-  
+function swch(sh,hm,eh,em){
+
 }
 
 //テーブル作成実行
-getCsvData('./diary.csv');
+//getCsvData("{% static "csv/diary.csv" %}");//DjangoにおけるURLが欲しい
 
 //各種ボタン設定
 //modalを閉じるボタン

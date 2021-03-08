@@ -3,16 +3,14 @@ from django.db import models
 from django.utils import timezone
 
 
-class Post(models.Model):
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
-    text = models.TextField()
-    created_date = models.DateTimeField(default=timezone.now)
-    published_date = models.DateTimeField(blank=True, null=True)
 
-    def publish(self):
-        self.published_date = timezone.now()
-        self.save()
+class Schedule(models.Model):
+    created_date = models.DateField(default=timezone.now)
+    month = models.CharField(max_length=7,primary_key=True)
+    date = models.DateField()
+    time = models.TimeField()
+    colors = models.CharField(max_length=20)
+    events = models.CharField(max_length=500)
 
     def __str__(self):
-        return self.title
+        return self.month
